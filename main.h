@@ -6,5 +6,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/wait.h>
+
+#define MAX_COMMAND_LENGTH 100
 
 #endif
