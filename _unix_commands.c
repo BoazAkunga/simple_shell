@@ -8,26 +8,26 @@
 
 void _ls(const char *path)
 {
-    DIR *dir;
-    struct dirent *entry;
+	DIR *dir;
+	struct dirent *entry;
 
-    dir = opendir(path);
-    if (dir == NULL)
-    {
-        perror("opendir");
-        return;
-    }
+	dir = opendir(path);
+	if (dir == NULL)
+	{
+	perror("opendir");
+	return;
+	}
 
-    while ((entry = readdir(dir)) != NULL)
-    {
-        if (entry->d_name[0] != '.')
-        {
-            write(STDOUT_FILENO, entry->d_name, strlen(entry->d_name));
-            write(STDOUT_FILENO, " ", 1);
-        }
-    }
-    closedir(dir);
-    write(STDOUT_FILENO, "\n", 1);
+	while ((entry = readdir(dir)) != NULL)
+	{
+	if (entry->d_name[0] != '.')
+	{
+	write(STDOUT_FILENO, entry->d_name, strlen(entry->d_name));
+	write(STDOUT_FILENO, " ", 1);
+	}
+	}
+	closedir(dir);
+	write(STDOUT_FILENO, "\n", 1);
 }
 
 
@@ -35,19 +35,19 @@ void _ls(const char *path)
  * _pwd - prints current working directory,
  */
 
-void _pwd()
+void _pwd(void)
 {
-    char cwd[1024];
+	char cwd[1024];
 
-    if (getcwd(cwd, sizeof(cwd)) != NULL)
-    {
-        write(STDOUT_FILENO, cwd, strlen(cwd));
-        write(STDOUT_FILENO, "\n", 1);
-    }
-    else
-    {
-        perror("_pwd");
-    }
+	if (getcwd(cwd, sizeof(cwd)) != NULL)
+	{
+	write(STDOUT_FILENO, cwd, strlen(cwd));
+	write(STDOUT_FILENO, "\n", 1);
+	}
+	else
+	{
+	perror("_pwd");
+	}
 }
 
 
@@ -55,17 +55,17 @@ void _pwd()
  * clearTerminal - clears the terminal
  */
 
-void clearTerminal()
+void clearTerminal(void)
 {
-    /* On Windows */
-    #ifdef _WIN32
-        system("cls");
+	/* On Windows */
+	#ifdef _WIN32
+	system("cls");
 
-    /* On Unix Systems*/
-    #else
-        system("clear");
+	/* On Unix Systems*/
+	#else
+	system("clear");
 
-    #endif
+	#endif
 }
 
 
@@ -76,10 +76,10 @@ void clearTerminal()
 
 void _cd(const char *path)
 {
-    if (chdir(path) != 0)
-    {
-        perror("cd");
-    }
+	if (chdir(path) != 0)
+	{
+	perror("cd");
+	}
 }
 
 
@@ -87,8 +87,7 @@ void _cd(const char *path)
  * exitTerminal - exits terminal
  */
 
-void exitTerminal()
+void exitTerminal(void)
 {
-
-    exit(EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }

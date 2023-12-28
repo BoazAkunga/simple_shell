@@ -14,9 +14,9 @@ int dollar_sign(void)
 	dromp = '#';
 	user_name = _getenv("USER");
 
-	if (getcw_dir(cw_dir, sizeof(cw_dir)) == NULL)
+	if (getcwd(cw_dir, sizeof(cw_dir)) == NULL)
 	{
-	perror("getcw_dir");
+	perror("getcwd");
 	}
 
 	write(STDOUT_FILENO, user_name, _strlen(user_name));
