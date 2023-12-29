@@ -7,16 +7,18 @@
 
 int dollar_sign(void)
 {
-	char dromp;
-	char *user_name;
 	char cw_dir[1024];
+	char dromp = '#';
+	char *user_name = _getenv("USER");
 
-	dromp = '#';
-	user_name = _getenv("USER");
-
+	if (user_name == NULL)
+	{
+	return (1);
+	}
 	if (getcwd(cw_dir, sizeof(cw_dir)) == NULL)
 	{
 	perror("getcwd");
+	return (1);
 	}
 
 	write(STDOUT_FILENO, user_name, _strlen(user_name));
